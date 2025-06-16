@@ -6,34 +6,57 @@ on:
       - 'v*.*.*'
 
 jobs:
-  build:
+  build-linux:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-
-      - name: Setup clang (macOS cross compile)
+      - name: Setup clang
         run: sudo apt-get install clang -y
-
       - name: Build Linux amd64 binary
         run: |
           make clean
           make build-linux-amd64
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: m3-linux-amd64
+          path: build/m3-linux-amd64
 
-      - name: Setup macOS build environment
-        uses: apple/actions/setup-xcode@v2
-
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
       - name: Build macOS amd64 binary
         run: |
           make clean
           make build-macos-amd64
-
       - name: Build macOS arm64 binary
         run: |
           make clean
           make build-macos-arm64
+      - name: Upload macOS artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-binaries
+          path: |
+            build/m3-macos-amd64
+            build/m3-macos-arm64
 
-      - name: Upload Release Assets
+  release:
+    needs: [build-linux, build-macos]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Linux artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: m3-linux-amd64
+          path: build
+      - name: Download macOS artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: macos-binaries
+          path: build
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
@@ -41,4 +64,4 @@ jobs:
             build/m3-macos-amd64
             build/m3-macos-arm64
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
