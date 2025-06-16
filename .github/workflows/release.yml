@@ -3,31 +3,42 @@ name: build
 on:
   push:
     tags:
-      - "v*.*.*"
+      - 'v*.*.*'
 
 jobs:
-  build-and-release:
-    name: Build and Release m3
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Install build dependencies
-        run: sudo apt-get update && sudo apt-get install -y build-essential
+      - name: Setup clang (macOS cross compile)
+        run: sudo apt-get install clang -y
 
-      - name: Build with Makefile
-        run: make
+      - name: Build Linux amd64 binary
+        run: |
+          make clean
+          make build-linux-amd64
 
-      - name: Check if binary exists
-        run: test -f ./m3
+      - name: Setup macOS build environment
+        uses: apple/actions/setup-xcode@v2
 
-      - name: Upload release binary
-        uses: softprops/action-gh-release@v2
+      - name: Build macOS amd64 binary
+        run: |
+          make clean
+          make build-macos-amd64
+
+      - name: Build macOS arm64 binary
+        run: |
+          make clean
+          make build-macos-arm64
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v1
         with:
           files: |
-            ./m3
+            build/m3-linux-amd64
+            build/m3-macos-amd64
+            build/m3-macos-arm64
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-
