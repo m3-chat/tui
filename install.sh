@@ -20,23 +20,16 @@ fi
 
 mkdir -p "$INSTALL_DIR"
 
-echo "Downloading $ASSET_NAME to $INSTALL_DIR..."
+echo "⬇Downloading $ASSET_NAME to $INSTALL_DIR..."
 curl -L "$LATEST_URL" -o "$INSTALL_DIR/$BINARY_NAME"
 
 chmod +x "$INSTALL_DIR/$BINARY_NAME"
 
+# Check and append to PATH if needed
 if ! echo "$PATH" | grep -q "$INSTALL_DIR"; then
-  if [ -n "$ZSH_VERSION" ]; then
-    PROFILE="$HOME/.zshrc"
-  elif [ -n "$BASH_VERSION" ]; then
-    PROFILE="$HOME/.bashrc"
-  elif [ -f "$HOME/.bashrc" ]; then
-    PROFILE="$HOME/.bashrc"
-  elif [ -f "$HOME/.zshrc" ]; then
-    PROFILE="$HOME/.zshrc"
-  else
-    PROFILE="$HOME/.profile"
-  fi
+  read -rp "What's your profile file? [.bashrc / .zshrc] (default: .bashrc): " PROFILE_FILE
+  PROFILE_FILE=${PROFILE_FILE:-.bashrc}
+  PROFILE="$HOME/$PROFILE_FILE"
 
   echo "Adding $INSTALL_DIR to PATH in $PROFILE..."
   echo "export PATH=\"\$PATH:$INSTALL_DIR\"" >> "$PROFILE"
