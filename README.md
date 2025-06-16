@@ -1,7 +1,26 @@
-# M3 Chat, in your terminal!
-![Build](https://github.com/m3-chat/tui/actions/workflows/release.yml/badge.svg)
-![Release](https://img.shields.io/github/v/release/m3-chat/tui)
-![License](https://img.shields.io/github/license/m3-chat/tui)
+```                                                                                  
+                               .--,-``-.                                                      
+                      ____    /   /     '.                ,---,                       ___     
+                    ,'  , `. / ../        ;             ,--.' |                     ,--.'|_   
+                   ,-+-,.' _ | \ ``\  .`-    '            |  |  :                     |  | :,'  
+              ,-+-. ;   , ||  \___\/   \   :            :  :  :                     :  : ' :  
+             ,--.'|'   |  ||       \   :   |    ,---.   :  |  |,--.    ,--.--.    .;__,'  /   
+            |   |  ,', |  |,       /  /   /    /     \  |  :  '   |   /       \   |  |   |    
+            |   | /  | |--'        \  \   \   /    / '  |  |   /' :  .--.  .-. |  :__,'| :    
+            |   : |  | ,       ___ /   :   | .    ' /   '  :  | | |   \__\/: . .    '  : |__  
+            |   : |  |/       /   /\   /   : '   ; :__  |  |  ' | :   ," .--.; |    |  | '.'| 
+            |   | |`-'       / ,,/  ',-    . '   | '.'| |  :  :_:,'  /  /  ,.  |    ;  :    ; 
+            |   ;/           \ ''\        ;  |   :    : |  | ,'     ;  :   .'   \   |  ,   /  
+            '---'             \   \     .'    \   \  /  `--''       |  ,     .-./    ---`-'   
+                               `--`-,,-'       `----'                `--`---'                 
+                                                                                  
+
+                                             > M3 Chat, in your terminal!
+```
+
+<p align="center"><img src="https://github.com/m3-chat/tui/actions/workflows/release.yml/badge.svg" alt="Build">
+<img src="https://img.shields.io/github/v/release/m3-chat/tui" alt="Release">
+<img src="https://img.shields.io/github/license/m3-chat/tui" alt="License"></p>
 
 A simple terminal UI (TUI) client for interacting with the [M3 Chat](https://github.com/m3-chat) API to get streamed AI responses.
 
