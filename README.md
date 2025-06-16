@@ -19,7 +19,7 @@
 
 
 
-                                             > M3 Chat, in your terminal!
+                                      > M3 Chat, in your terminal!
 ```
 
 <p align="center"><img src="https://github.com/m3-chat/tui/actions/workflows/release.yml/badge.svg" alt="Build">
