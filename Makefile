@@ -1,20 +1,33 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -O2 -Iinclude
-LDFLAGS =
+CC=clang
+CFLAGS=-Wall -Wextra -O2 -Iinclude
+SRC=$(wildcard src/*.c)
+OBJ=$(SRC:.c=.o)
+BINARY=m3
 
-SRC = src/main.c src/models.c src/network.c src/ui.c
-OBJ = $(SRC:.c=.o)
-TARGET = m3
+# Output dir for builds
+BUILD_DIR=build
 
 .PHONY: all clean
 
-all: $(TARGET)
+all: build-linux-amd64 build-macos-amd64 build-macos-arm64
 
-$(TARGET): $(OBJ)
-	$(CC) $(LDFLAGS) -o $@ $^
+build-linux-amd64: CFLAGS += -target x86_64-linux-gnu
+build-linux-amd64: $(OBJ)
+	mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/m3-linux-amd64 $(OBJ)
+
+build-macos-amd64: CFLAGS += -target x86_64-apple-macos11
+build-macos-amd64: $(OBJ)
+	mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/m3-macos-amd64 $(OBJ)
+
+build-macos-arm64: CFLAGS += -target arm64-apple-macos11
+build-macos-arm64: $(OBJ)
+	mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/m3-macos-arm64 $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -rf $(OBJ) $(BUILD_DIR)
