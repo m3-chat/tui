@@ -64,4 +64,4 @@ jobs:
             build/m3-macos-amd64
             build/m3-macos-arm64
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
