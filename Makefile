@@ -1,33 +1,32 @@
 CC=clang++
 CFLAGS=-Wall -Wextra -O2 -Iinclude
 SRC=$(wildcard src/*.cpp)
-OBJ=$(SRC:.cpp=.o)
-BINARY=m3
-
-# Output dir for builds
 BUILD_DIR=build
+BIN_NAME=m3
+
+# Pattern rule for building per target object files
+define BUILD_TARGET
+
+$(1)_OBJ := $(patsubst src/%.cpp,$(BUILD_DIR)/$(1)/%.o,$(SRC))
+
+build-$(1): CFLAGS += -target $(2)
+build-$(1): $($(1)_OBJ)
+	mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$(BIN_NAME)-$(1) $($(1)_OBJ)
+
+$(BUILD_DIR)/$(1)/%.o: src/%.cpp
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $$< -o $$@
+
+endef
+
+# Define targets with (target-name, clang target triple)
+$(eval $(call BUILD_TARGET,linux-amd64,x86_64-linux-gnu))
+$(eval $(call BUILD_TARGET,macos-amd64,x86_64-apple-macos11))
+$(eval $(call BUILD_TARGET,macos-arm64,arm64-apple-macos11))
 
 .PHONY: all clean
-
 all: build-linux-amd64 build-macos-amd64 build-macos-arm64
 
-build-linux-amd64: CFLAGS += -target x86_64-linux-gnu
-build-linux-amd64: $(OBJ)
-	mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -o $(BUILD_DIR)/m3-linux-amd64 $(OBJ)
-
-build-macos-amd64: CFLAGS += -target x86_64-apple-macos11
-build-macos-amd64: $(OBJ)
-	mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -o $(BUILD_DIR)/m3-macos-amd64 $(OBJ)
-
-build-macos-arm64: CFLAGS += -target arm64-apple-macos11
-build-macos-arm64: $(OBJ)
-	mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -o $(BUILD_DIR)/m3-macos-arm64 $(OBJ)
-
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
-	rm -rf $(OBJ) $(BUILD_DIR)
+	rm -rf $(BUILD_DIR)

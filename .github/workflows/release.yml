@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup clang
-        run: sudo apt-get install clang -y
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install clang -y
       - name: Build Linux amd64 binary
         run: |
           make clean
@@ -56,6 +56,8 @@ jobs:
         with:
           name: macos-binaries
           path: build
+      - name: List files (debug)
+        run: ls -l build
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:

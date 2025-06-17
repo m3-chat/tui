@@ -1,5 +1,6 @@
 #include "models.h"
 #include "ui.h"
+#include <algorithm>
 
 const std::vector<std::string> available_models = {
     "llama3:8b", "llama2-uncensored", "gemma3", "gemma", "phi3:mini", "mistral",
