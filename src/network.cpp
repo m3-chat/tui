@@ -10,7 +10,7 @@
 
 static char *url_encode(const char *str)
 {
-    char *enc = malloc(strlen(str) * 3 + 1);
+    char *enc = (char *)malloc(strlen(str) * 3 + 1); // thx DT <https://github.com/Voidless7125>
     char *penc = enc;
 
     if (!enc)
@@ -28,7 +28,7 @@ static char *url_encode(const char *str)
         }
         else
         {
-            sprintf(penc, "%%%02X", (unsigned char)*str);
+            snprintf(penc, 4, "%%%02X", (unsigned char)*str); // thx DT <https://github.com/Voidless7125>
             penc += 3;
         }
         str++;

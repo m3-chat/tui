@@ -1,7 +1,7 @@
 CC=clang
 CFLAGS=-Wall -Wextra -O2 -Iinclude
-SRC=$(wildcard src/*.c)
-OBJ=$(SRC:.c=.o)
+SRC=$(wildcard src/*.cpp)
+OBJ=$(SRC:.cpp=.o)
 BINARY=m3
 
 # Output dir for builds
@@ -26,7 +26,7 @@ build-macos-arm64: $(OBJ)
 	mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -o $(BUILD_DIR)/m3-macos-arm64 $(OBJ)
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
