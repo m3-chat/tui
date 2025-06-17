@@ -1,9 +1,8 @@
-#ifndef MODELS_H
-#define MODELS_H
+#pragma once
+#include <string>
+#include <vector>
 
-extern const char *available_models[];
-extern const int available_models_count;
+extern const std::vector<std::string> available_models;
 
-void list_models(void);
-
-#endif
+void list_models();
+bool is_valid_model(const std::string &model);

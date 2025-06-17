@@ -1,4 +1,4 @@
-CC=clang
+CC=clang++
 CFLAGS=-Wall -Wextra -O2 -Iinclude
 SRC=$(wildcard src/*.cpp)
 OBJ=$(SRC:.cpp=.o)

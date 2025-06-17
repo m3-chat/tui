@@ -4,7 +4,7 @@ rm src/main.o
 rm src/ui.o
 rm src/network.o
 rm src/models.o
-rmdir build
+rm -rf build
 
 if [ "$1" = "--and-rebuild" ]; then
     make

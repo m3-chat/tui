@@ -1,50 +1,46 @@
-#include <stdio.h>
-#include <string.h>
+#include <iostream>
+#include <string>
 #include "models.h"
 #include "network.h"
 #include "ui.h"
 
-#define MAX_INPUT 2048
-
 int main(int argc, char *argv[])
 {
-    const char *model = argc > 1 ? argv[1] : NULL;
+    std::string model = (argc > 1) ? argv[1] : "";
 
     print_intro_box();
 
-    if (!model)
+    if (model.empty() || !is_valid_model(model))
     {
         list_models();
         print_muted("Usage: ./m3 <model>\n\n");
         return 0;
     }
 
-    print_muted("Selected model: %s\n", model);
+    print_muted("Selected model: %s\n", model.c_str());
 
-    char input[MAX_INPUT];
-    while (1)
+    std::string input;
+    while (true)
     {
         print_muted("\n> ");
-        if (!fgets(input, MAX_INPUT, stdin))
+        if (!std::getline(std::cin, input))
             break;
 
-        input[strcspn(input, "\n")] = '\0';
-
-        if (strcmp(input, "/exit") == 0)
+        if (input == "/exit")
             break;
-        if (strcmp(input, "/models") == 0)
+        if (input == "/models")
         {
             list_models();
             continue;
         }
-        if (strcmp(input, "/clear") == 0)
+        if (input == "/clear")
         {
             clear_screen();
             continue;
         }
 
-        box_input(input);
-        fetch_response(model, input);
+        box_input(input.c_str());
+        fetch_response(model.c_str(), input.c_str());
     }
 
     print_muted("\nExiting m3chat-tui. Bye!\n");
