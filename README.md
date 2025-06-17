@@ -42,7 +42,7 @@ A simple terminal UI (TUI) client for interacting with the [M3 Chat](https://git
 You can install the latest binary easily with the install script:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/m3-chat/tui/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/m3-chat/tui/main/install-m3.sh | bash
 ```
 
 The script detects your OS and architecture, downloads the latest release, installs it to `~/.local/bin`, and updates your shell PATH.
