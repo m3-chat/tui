@@ -1,5 +1,5 @@
 CC=clang++
-CFLAGS=-Wall -Wextra -O2 -Iinclude
+CFLAGS=-Wall -Wextra -O2 -std=c++20 -Iinclude
 SRC=$(wildcard src/*.cpp)
 BUILD_DIR=build
 BIN_NAME=m3
