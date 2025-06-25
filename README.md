@@ -22,9 +22,9 @@
                                       > M3 Chat, in your terminal!
 ```
 
-<p align="center"><img src="https://github.com/m3-chat/tui/actions/workflows/release.yml/badge.svg" alt="Build">
-<img src="https://img.shields.io/github/v/release/m3-chat/tui" alt="Release">
-<img src="https://img.shields.io/github/license/m3-chat/tui" alt="License"></p>
+<p align="center"><img src="https://github.com/m3chat/tui/actions/workflows/release.yml/badge.svg" alt="Build">
+<img src="https://img.shields.io/github/v/release/m3chat/tui" alt="Release">
+<img src="https://img.shields.io/github/license/m3chat/tui" alt="License"></p>
 
 A simple terminal UI (TUI) client for interacting with the [M3 Chat](https://github.com/m3-chat) API to get streamed AI responses.
 
