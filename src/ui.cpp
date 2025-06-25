@@ -21,9 +21,34 @@ void print_muted(const char *fmt, ...)
 void print_intro_box(void)
 {
     printf(COLOR_MUTED "\n╭─────────────────────────────────────────────────────────────╮\n" COLOR_RESET);
+    // Gradient colors for each line
+    const char *gradient[] = {
+        "\x1b[38;5;81m",  // blue
+        "\x1b[38;5;75m",  // cyan
+        "\x1b[38;5;78m",  // green-cyan
+        "\x1b[38;5;114m", // green
+        "\x1b[38;5;149m", // yellow-green
+        "\x1b[38;5;221m"  // yellow
+    };
+    const char *ascii_lines[] = {
+        "   ███╗   ███╗██████╗      ██████╗██╗  ██╗ █████╗ ████████╗",
+        "   ████╗ ████║╚════██╗    ██╔════╝██║  ██║██╔══██╗╚══██╔══╝",
+        "   ██╔████╔██║ █████╔╝    ██║     ███████║███████║   ██║   ",
+        "   ██║╚██╔╝██║ ╚═══██╗    ██║     ██╔══██║██╔══██║   ██║   ",
+        "   ██║ ╚═╝ ██║██████╔╝    ╚██████╗██║  ██║██║  ██║   ██║   ",
+        "   ╚═╝     ╚═╝╚═════╝      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   "};
+    for (int i = 0; i < 6; ++i)
+    {
+        printf(COLOR_MUTED "│"
+                           "%s%s" COLOR_RESET,
+               gradient[i], ascii_lines[i]);
+        printf("  ");
+        printf(COLOR_MUTED "│\n" COLOR_RESET);
+    }
     printf(COLOR_MUTED "│                                                             │\n" COLOR_RESET);
-
-    printf(COLOR_MUTED "│ " COLOR_WHITE "    * Welcome to m3chat-tui                                 " COLOR_MUTED "│\n" COLOR_RESET);
+    printf(COLOR_MUTED "│ " COLOR_WHITE "    "
+                       "\x1b[36m*\x1b[97m"
+                       " Welcome to m3chat-tui                                 " COLOR_MUTED "│\n" COLOR_RESET);
     printf(COLOR_MUTED "│                                                             │\n" COLOR_RESET);
     printf(COLOR_MUTED "│ " COLOR_WHITE "    Type a prompt and get an AI response from your model.   " COLOR_MUTED "│\n" COLOR_RESET);
     printf(COLOR_MUTED "│                                                             │\n" COLOR_RESET);
@@ -31,7 +56,6 @@ void print_intro_box(void)
     printf(COLOR_MUTED "│ " COLOR_WHITE "    /exit   — quit                                          " COLOR_MUTED "│\n" COLOR_RESET);
     printf(COLOR_MUTED "│ " COLOR_WHITE "    /clear  — clear screen                                  " COLOR_MUTED "│\n" COLOR_RESET);
     printf(COLOR_MUTED "│                                                             │\n" COLOR_RESET);
-
     printf(COLOR_MUTED "╰─────────────────────────────────────────────────────────────╯\n\n" COLOR_RESET);
 }
 
