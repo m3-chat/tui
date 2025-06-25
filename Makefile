@@ -12,7 +12,7 @@ $(eval $(1)_OBJ = $(patsubst src/%.cpp,$(BUILD_DIR)/$(1)/%.o,$(SRC)))
 build-$(1): CFLAGS += -target $(2)
 build-$(1): $$($(1)_OBJ)
 	mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$(BIN_NAME)-$(1) $$($(1)_OBJ)
+	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$(BIN_NAME)-$(1) $$($(1)_OBJ) -lcurl
 
 $(BUILD_DIR)/$(1)/%.o: src/%.cpp
 	mkdir -p $$(dir $$@)

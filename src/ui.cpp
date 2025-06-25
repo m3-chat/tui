@@ -18,6 +18,15 @@ void print_muted(const char *fmt, ...)
     va_end(args);
 }
 
+void print_error(const char *fmt, ...)
+{
+    va_list args;
+    va_start(args, fmt);
+    fprintf(stderr, "\033[1;31merror:\033[0m ");
+    vfprintf(stderr, fmt, args);
+    va_end(args);
+}
+
 void print_intro_box(void)
 {
     printf(COLOR_MUTED "\n╭─────────────────────────────────────────────────────────────╮\n" COLOR_RESET);
