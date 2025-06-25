@@ -1,26 +1,10 @@
-```
-                               .--,-``-.
-                      ____    /   /     '.                ,---,                       ___
-                    ,'  , `. / ../        ;             ,--.' |                     ,--.'|_
-                ,-+-,.' _ | \ ``\  .`-    '            |  |  :                     |  | :,'
-              ,-+-. ;   , ||  \___\/   \   :            :  :  :                     :  : ' :
-             ,--.'|'   |  ||       \   :   |    ,---.   :  |  |,--.    ,--.--.    .;__,'  /
-            |   |  ,', |  |,       /  /   /    /     \  |  :  '   |   /       \   |  |   |
-            |   | /  | |--'        \  \   \   /    / '  |  |   /' :  .--.  .-. |  :__,'| :
-            |   : |  | ,       ___ /   :   | .    ' /   '  :  | | |   \__\/: . .    '  : |__
-            |   : |  |/       /   /\   /   : '   ; :__  |  |  ' | :   ," .--.; |    |  | '.'|
-            |   | |`-'       / ,,/  ',-    . '   | '.'| |  :  :_:,'  /  /  ,.  |    ;  :    ;
-            |   ;/           \ ''\        ;  |   :    : |  | ,'     ;  :   .'   \   |  ,   /
-            '---'             \   \     .'    \   \  /  `--''       |  ,     .-./    ---`-'
-                               `--`-,,-'       `----'                `--`---'
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/24574b06-4077-4205-b5ed-11bbfce41c9c">
+</p>
 
-
-
-
-
-
-                                      > M3 Chat, in your terminal!
-```
+<p align="center">
+  M3 Chat. In your terminal.
+</p>
 
 <p align="center"><img src="https://github.com/m3chat/tui/actions/workflows/release.yml/badge.svg" alt="Build">
 <img src="https://img.shields.io/github/v/release/m3chat/tui" alt="Release">
