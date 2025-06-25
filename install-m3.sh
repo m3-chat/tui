@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-REPO="m3-chat/tui"
+REPO="m3chat/tui"
 BINARY_NAME="m3"
 INSTALL_DIR="$HOME/.local/bin"
 
