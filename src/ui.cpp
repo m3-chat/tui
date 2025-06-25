@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
-#include "ui.h"
+#include "../include/ui.h"
 
 #define COLOR_MUTED "\x1b[38;5;102m"
 #define COLOR_RESET "\x1b[0m"
@@ -29,7 +29,7 @@ void print_error(const char *fmt, ...)
 
 void print_intro_box(void)
 {
-    printf(COLOR_MUTED "\n╭─────────────────────────────────────────────────────────────╮\n" COLOR_RESET);
+    printf(COLOR_MUTED "\n╭────────────────────────────────────────────────────────────────────────────╮\n" COLOR_RESET);
     // Gradient colors for each line
     const char *gradient[] = {
         "\x1b[38;5;81m",  // blue
@@ -40,12 +40,12 @@ void print_intro_box(void)
         "\x1b[38;5;221m"  // yellow
     };
     const char *ascii_lines[] = {
-        "   ███╗   ███╗██████╗      ██████╗██╗  ██╗ █████╗ ████████╗",
-        "   ████╗ ████║╚════██╗    ██╔════╝██║  ██║██╔══██╗╚══██╔══╝",
-        "   ██╔████╔██║ █████╔╝    ██║     ███████║███████║   ██║   ",
-        "   ██║╚██╔╝██║ ╚═══██╗    ██║     ██╔══██║██╔══██║   ██║   ",
-        "   ██║ ╚═╝ ██║██████╔╝    ╚██████╗██║  ██║██║  ██║   ██║   ",
-        "   ╚═╝     ╚═╝╚═════╝      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   "};
+        "  ██╗             ███╗   ███╗██████╗      ██████╗██╗  ██╗ █████╗ ████████╗",
+        "   ╚██╗           ████╗ ████║╚════██╗    ██╔════╝██║  ██║██╔══██╗╚══██╔══╝",
+        "     ╚██╗         ██╔████╔██║ █████╔╝    ██║     ███████║███████║   ██║   ",
+        "    ██╔╝          ██║╚██╔╝██║ ╚═══██╗    ██║     ██╔══██║██╔══██║   ██║   ",
+        "  ██╔╝███████╗    ██║ ╚═╝ ██║██████╔╝    ╚██████╗██║  ██║██║  ██║   ██║   ",
+        "  ╚═╝ ╚══════╝    ╚═╝     ╚═╝╚═════╝      ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   "};
     for (int i = 0; i < 6; ++i)
     {
         printf(COLOR_MUTED "│"
@@ -54,18 +54,18 @@ void print_intro_box(void)
         printf("  ");
         printf(COLOR_MUTED "│\n" COLOR_RESET);
     }
-    printf(COLOR_MUTED "│                                                             │\n" COLOR_RESET);
+    printf(COLOR_MUTED "│                                                                            │\n" COLOR_RESET);
     printf(COLOR_MUTED "│ " COLOR_WHITE "    "
                        "\x1b[36m*\x1b[97m"
-                       " Welcome to m3chat-tui                                 " COLOR_MUTED "│\n" COLOR_RESET);
-    printf(COLOR_MUTED "│                                                             │\n" COLOR_RESET);
-    printf(COLOR_MUTED "│ " COLOR_WHITE "    Type a prompt and get an AI response from your model.   " COLOR_MUTED "│\n" COLOR_RESET);
-    printf(COLOR_MUTED "│                                                             │\n" COLOR_RESET);
-    printf(COLOR_MUTED "│ " COLOR_WHITE "    /models — list available models                         " COLOR_MUTED "│\n" COLOR_RESET);
-    printf(COLOR_MUTED "│ " COLOR_WHITE "    /exit   — quit                                          " COLOR_MUTED "│\n" COLOR_RESET);
-    printf(COLOR_MUTED "│ " COLOR_WHITE "    /clear  — clear screen                                  " COLOR_MUTED "│\n" COLOR_RESET);
-    printf(COLOR_MUTED "│                                                             │\n" COLOR_RESET);
-    printf(COLOR_MUTED "╰─────────────────────────────────────────────────────────────╯\n\n" COLOR_RESET);
+                       " Welcome to m3chat-tui                                 " COLOR_MUTED "               │\n" COLOR_RESET);
+    printf(COLOR_MUTED "│                                                                            │\n" COLOR_RESET);
+    printf(COLOR_MUTED "│ " COLOR_WHITE "    Type a prompt and get an AI response from the LLM   " COLOR_MUTED "                   │\n" COLOR_RESET);
+    printf(COLOR_MUTED "│                                                                            │\n" COLOR_RESET);
+    printf(COLOR_MUTED "│ " COLOR_WHITE "    /models — list available models                         " COLOR_MUTED "               │\n" COLOR_RESET);
+    printf(COLOR_MUTED "│ " COLOR_WHITE "    /exit   — quit                                          " COLOR_MUTED "               │\n" COLOR_RESET);
+    printf(COLOR_MUTED "│ " COLOR_WHITE "    /clear  — clear screen                                  " COLOR_MUTED "               │\n" COLOR_RESET);
+    printf(COLOR_MUTED "│                                                                            │\n" COLOR_RESET);
+    printf(COLOR_MUTED "╰────────────────────────────────────────────────────────────────────────────╯\n\n" COLOR_RESET);
 }
 
 void box_input(const char *input)
