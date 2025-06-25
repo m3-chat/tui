@@ -29,6 +29,14 @@ You can install the latest binary easily with the install script:
 curl -fsSL https://raw.githubusercontent.com/m3chat/tui/refs/heads/main/install-m3.sh | bash
 ```
 
+## Uninstalling
+
+To uninstall the installed version of `m3chat-tui`/`m3` run this command:
+
+```sh
+rm -rf ~/.local/bin/m3
+```
+
 The script detects your OS and architecture, downloads the latest release, installs it to `~/.local/bin`, and updates your shell PATH.
 
 ## Usage
